@@ -10,6 +10,10 @@ export const server = http.createServer(app)
 
 export const io = socketIo(server)
 
+const usp = io.of("/user-namespace")
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
