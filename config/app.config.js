@@ -12,7 +12,17 @@ export const io = socketIo(server)
 
 const usp = io.of("/user-namespace")
 
+usp.on("connection", updateUserOnlineStatus)
 
+const updateUserOnlineStatus = (socket)=>{
+    console.log("User Connected")
+
+    console.log(socket.handshake.auth.id)
+
+    socket.on("disconnect", ()=>{
+        console.log("User Disconnected")
+    })
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
