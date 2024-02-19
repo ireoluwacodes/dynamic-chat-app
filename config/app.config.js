@@ -6,26 +6,30 @@ import { appRouter } from "../routes/app.route.js";
 
 export const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors())
+
+app.use(appRouter);
+
+// socket shits
 export const server = http.createServer(app)
 
 export const io = socketIo(server)
 
 const usp = io.of("/user-namespace")
 
-usp.on("connection", updateUserOnlineStatus)
-
 const updateUserOnlineStatus = (socket)=>{
     console.log("User Connected")
 
-    console.log(socket.handshake.auth.id)
+    const id = socket.handshake.auth.id
+
+
+    socket.broadcast.emit("currentlyOnline", {id: user._id})
 
     socket.on("disconnect", ()=>{
         console.log("User Disconnected")
     })
 }
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors())
-
-app.use(appRouter);
+usp.on("connection", updateUserOnlineStatus)
