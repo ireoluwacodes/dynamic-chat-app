@@ -24,6 +24,8 @@ const updateUserOnlineStatus = (socket) => {
 
   const id = socket.handshake.auth.id;
 
+//   update online status in the db
+
   socket.broadcast.emit("currentlyOnline", { id });
 
   socket.on("disconnect", () => {
