@@ -9,4 +9,10 @@ Then update a users online status by using the socket "of" method with the name 
     to the base endpoint or a particular "endpoint"
     Example
     const socket = io("/home", { authorization : "Bearer the-jwt-token-goes-here" })
-    
+    So yh basically for the chat feature when a chat is sent    
+        1) it is displayed on the client
+        2) sent to an http endpoint to save it to the db
+        3) then sent to the socket server, which the broadcasts it to all connected socket clients
+        4) the client listens for the broadcasted socket event and receives data
+    So yh basically when a chat is received on the client
+        
