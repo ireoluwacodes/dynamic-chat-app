@@ -15,4 +15,5 @@ Then update a users online status by using the socket "of" method with the name 
         3) then sent to the socket server, which the broadcasts it to all connected socket clients
         4) the client listens for the broadcasted socket event and receives data
     So yh basically when a chat is received on the client
-        
+        1)roles are reversed yh so the sender_id is the received_id and vice versa
+        2)there is conditional rendering to only display a text for the receiving user if the current chat open has the confirmed sender and receiver_id as th incoming text(client side)
