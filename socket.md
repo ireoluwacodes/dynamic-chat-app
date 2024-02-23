@@ -15,5 +15,15 @@ Then update a users online status by using the socket "of" method with the name 
         3) then sent to the socket server, which the broadcasts it to all connected socket clients
         4) the client listens for the broadcasted socket event and receives data
     So yh basically when a chat is received on the client
-        1)roles are reversed yh so the sender_id is the received_id and vice versa
-        2)there is conditional rendering to only display a text for the receiving user if the current chat open has the confirmed sender and receiver_id as th incoming text(client side)
+        1) roles are reversed yh so the sender_id is the received_id and vice versa
+        2) there is conditional rendering to only display a text for the receiving user if the current chat open has the confirmed sender and receiver_id as the incoming text (client side)
+        
+    Next the old chats have to be loaded when the chat is opened
+        so the socket on the client side sends a request with the sender_id and receiver_id and its both ways so yk the db search is for both
+        the chats are fetched and emitted to all connected sockets apparently
+        so i return an array to the client. The client loops through the array and assigns properties for each loop element based on the sender_id for the particular element(out of two) the displays the element in the browser
+
+    Next to delete chats theres a http endpoint to delete a chat given the id
+        The client also deletes it from display once deleted from the db successfully
+        Then the client emits a socket event to the socket on the server side that a chat has been deleted
+        The socket server broadcasts the id to all connected sockets and a function is triggered from a that event clears thar chat where it exists
