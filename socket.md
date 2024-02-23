@@ -27,3 +27,7 @@ Then update a users online status by using the socket "of" method with the name 
         The client also deletes it from display once deleted from the db successfully
         Then the client emits a socket event to the socket on the server side that a chat has been deleted
         The socket server broadcasts the id to all connected sockets and a function is triggered from a that event clears thar chat where it exists
+
+    Same logic to edit a chat
+
+    
