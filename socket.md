@@ -30,4 +30,4 @@ Then update a users online status by using the socket "of" method with the name 
 
     Same logic to edit a chat
 
-    
+    use updade instead of delete
