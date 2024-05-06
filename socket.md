@@ -8,7 +8,7 @@ Then update a users online status by using the socket "of" method with the name 
     The bearer is passed(as an object) as the second parameter while initializing the io used for socket connection on the client from the client
     to the base endpoint or a particular "endpoint"
     Example
-    const socket = io("/home", { authorization : "Bearer the-jwt-token-goes-here" })
+    const socket = io("/home", { auth : "Bearer the-jwt-token-goes-here" })
     So yh basically for the chat feature when a chat is sent    
         1) it is displayed on the client
         2) sent to an http endpoint to save it to the db
